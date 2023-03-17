@@ -1,0 +1,33 @@
+@import "reset";
+@import "variables/global";
+@import "themes/light";
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+a {
+  font-weight: 500;
+  color: var(--link-primary-color);
+  text-decoration: inherit;
+
+  &:hover {
+    color: var(--link-hover-color);
+  }
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}

@@ -1,0 +1,28 @@
+.RepoRow {
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid var(--primary-color);
+  margin: 10px 0;
+  padding: 8px 20px;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 13px;
+  flex: 1;
+  min-width: 250px;
+  text-align: left;
+}
+
+.meta,
+.stars {
+  display: flex;
+  font-size: 15px;
+}
+
+.meta {
+  justify-content: space-between;
+}
+
+.iconWrap {
+  padding-top: 2px;
+  margin-right: 2px;
+}
