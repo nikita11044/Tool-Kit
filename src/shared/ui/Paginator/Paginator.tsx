@@ -3,7 +3,8 @@ import cls from './Paginator.module.scss';
 import { usePagination } from './lib/hooks/usePagination';
 
 interface IPaginatorProps {
-    onPageChange: (page: number) => void,
+    onNext: (page: number) => void,
+    onPrevious: (page: number) => void,
     totalCount: number
     siblingCount?: number
     currentPage: number
@@ -11,7 +12,8 @@ interface IPaginatorProps {
 }
 
 export const Paginator: FC<IPaginatorProps> = ({
-    onPageChange,
+    onNext,
+    onPrevious,
     totalCount,
     siblingCount = 1,
     currentPage,
@@ -28,12 +30,12 @@ export const Paginator: FC<IPaginatorProps> = ({
         return null;
     }
 
-    const onNext = () => {
-        onPageChange(currentPage + 1);
+    const onNextPage = () => {
+        onNext(currentPage + 1);
     };
 
-    const onPrevious = () => {
-        onPageChange(currentPage - 1);
+    const onPreviousPage = () => {
+        onPrevious(currentPage - 1);
     };
 
     const lastPage = paginationRange[paginationRange.length - 1];
@@ -46,7 +48,7 @@ export const Paginator: FC<IPaginatorProps> = ({
                 <button
                     className={`${cls.item} ${cls.btn} ${currentPage === 1 && cls.disabled}`}
                     disabled={currentPage === 1}
-                    onClick={onPrevious}
+                    onClick={onPreviousPage}
                 >
                     prev
                 </button>
@@ -73,7 +75,7 @@ export const Paginator: FC<IPaginatorProps> = ({
                 <button
                     className={`${cls.item} ${cls.btn} ${currentPage === lastPage && cls.disabled}`}
                     disabled={currentPage === lastPage}
-                    onClick={onNext}
+                    onClick={onNextPage}
                 >
                     next
                 </button>

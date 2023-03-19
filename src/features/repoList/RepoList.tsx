@@ -1,27 +1,25 @@
 import React, { useState } from 'react';
-import { RepoRow } from '~/entities/Repository/ui/RepoRow/RepoRow';
 import { Paginator } from '~/shared/ui';
+import { RepoRow, useRepos } from '~/entities/Repository';
 
 export const RepoList = () => {
     const [currentPage, setCurrentPage] = useState(1);
 
+    const repos = useRepos((state) => state.repos);
+    const repositoryCount = useRepos((state) => state.repositoryCount);
+
     return (
         <>
             <ul>
-                <RepoRow />
-                <RepoRow />
-                <RepoRow />
-                <RepoRow />
-                <RepoRow />
-                <RepoRow />
-                <RepoRow />
-                <RepoRow />
-                <RepoRow />
-                <RepoRow />
+                {
+                    repos?.map(({ name, stargazerCount, updatedAt }) => (
+                        <RepoRow name={name} stargazerCount={stargazerCount} updatedAt={updatedAt} />
+                    ))
+                }
             </ul>
             <Paginator
                 onPageChange={(page) => setCurrentPage(page)}
-                totalCount={274}
+                totalCount={repositoryCount}
                 currentPage={currentPage}
                 pageSize={10}
             />

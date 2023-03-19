@@ -1,0 +1,30 @@
+schema:
+  - https://api.github.com/graphql:
+      headers:
+        User-Agent: NI
+        Authorization: Bearer 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
+documents: './src/**/**.graphql'
+config:
+  withHooks: true
+  skipTypename: true
+  immutableTypes: true
+  preResolveTypes: true
+generates:
+  ./src/models.gen.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-query
+    config:
+      fetcher: graphql-request
+  src:
+    preset: near-operation-file-preset
+    presetConfig:
+      extension: .gen.ts
+      baseTypesPath: models.gen.ts
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-query
+    config:
+      fetcher: graphql-request

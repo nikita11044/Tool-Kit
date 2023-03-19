@@ -1,0 +1,16 @@
+query SearchReposByName($repoQuery: String!, $first: Int, $last: Int, $before: String, $after: String) {
+    search(query: $repoQuery, type: REPOSITORY, first: $first, last: $last before: $before, after: $after) {
+        repositoryCount
+        pageInfo {
+            startCursor
+            endCursor
+        }
+        nodes {
+            ... on Repository {
+                name
+                stargazerCount
+                updatedAt
+            }
+        }
+    }
+}

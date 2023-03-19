@@ -5,8 +5,8 @@ import cls from './App.module.scss';
 export const App = () => (
     <div className="App light__theme">
         <div className={cls.content}>
-            {/* <Main /> */}
-            <Repo />
+            <Main />
+            {/* <Repo /> */}
         </div>
     </div>
 );
