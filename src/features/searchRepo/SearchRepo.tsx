@@ -44,22 +44,35 @@ export const SearchRepo = () => {
     return (
         <>
             <Input value={repoQuery} onChange={onChange} placeholder="Find your dream repo..." />
-            <ul>
-                {
-                    repos?.map(({
-                        id, name, stargazerCount, updatedAt,
-                    }) => (
-                        <RepoRow id={id} name={name} stargazerCount={stargazerCount} updatedAt={updatedAt} />
-                    ))
-                }
-            </ul>
-            <Paginator
-                currentPage={currentPage}
-                onNext={onNext}
-                onPrevious={onPrevious}
-                totalCount={repositoryCount}
-                pageSize={10}
-            />
+            {
+                Boolean(repos.length)
+                && (
+                    <>
+                        <ul>
+                            {
+                                repos.map(({
+                                    id, name, stargazerCount, updatedAt,
+                                }) => (
+                                    <RepoRow
+                                        key={`${id}-${name}`}
+                                        id={id}
+                                        name={name}
+                                        stargazerCount={stargazerCount}
+                                        updatedAt={updatedAt}
+                                    />
+                                ))
+                            }
+                        </ul>
+                        <Paginator
+                            currentPage={currentPage}
+                            onNext={onNext}
+                            onPrevious={onPrevious}
+                            totalCount={repositoryCount}
+                            pageSize={10}
+                        />
+                    </>
+                )
+            }
         </>
     );
 };

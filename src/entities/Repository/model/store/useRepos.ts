@@ -23,6 +23,10 @@ export const useRepos = create<IReposStateSchema>()(
                     state.repos = data.nodes;
                     state.repositoryCount = data.repositoryCount;
                     state.pageInfo = data.pageInfo;
+
+                    if (!data.nodes.length) {
+                        state.currentPage = 1;
+                    }
                 }, false, 'setRepos');
             },
             setRepoQuery: (repoQuery) => {

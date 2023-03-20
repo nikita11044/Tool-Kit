@@ -68,7 +68,14 @@ export const RepoCard = ({
                 languages.length
                     ? (
                         <ul className={cls.langList}>
-                            {languages.map(({ name, color }) => <li style={{ color }}>{name}</li>)}
+                            {languages.map(({ name, color }) => (
+                                <li
+                                    key={`${name}-${color}`}
+                                    style={{ color }}
+                                >
+                                    {name}
+                                </li>
+                            ))}
                         </ul>
                     )
                     : <p>No language data available</p>
