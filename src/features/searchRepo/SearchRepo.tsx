@@ -46,8 +46,10 @@ export const SearchRepo = () => {
             <Input value={repoQuery} onChange={onChange} placeholder="Find your dream repo..." />
             <ul>
                 {
-                    repos?.map(({ name, stargazerCount, updatedAt }) => (
-                        <RepoRow name={name} stargazerCount={stargazerCount} updatedAt={updatedAt} />
+                    repos?.map(({
+                        id, name, stargazerCount, updatedAt,
+                    }) => (
+                        <RepoRow id={id} name={name} stargazerCount={stargazerCount} updatedAt={updatedAt} />
                     ))
                 }
             </ul>

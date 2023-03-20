@@ -6,8 +6,6 @@ import { routerCfg } from '~/shared/cfg/routerCfg/routerCfg';
 export const App = () => (
     <div className="App light__theme">
         <div className={cls.content}>
-            {/* <Main /> */}
-            {/* <Repo /> */}
             <RouterProvider router={routerCfg} />
         </div>
     </div>

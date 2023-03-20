@@ -1,4 +1,5 @@
 interface IRepoNode {
+    id: string
     name: string
     stargazerCount: number
     updatedAt: string

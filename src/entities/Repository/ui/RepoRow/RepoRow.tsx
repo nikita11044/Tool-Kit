@@ -1,15 +1,19 @@
+import { Link } from 'react-router-dom';
 import cls from './RepoRow.module.scss';
 import { ReactComponent as Star } from '~/shared/assets/icons/star.svg';
 
 interface IRepoRowProps {
+    id: string
     name: string
     stargazerCount: number
     updatedAt: string
 }
 
-export const RepoRow = ({ name, stargazerCount, updatedAt }: IRepoRowProps) => (
+export const RepoRow = ({
+    id, name, stargazerCount, updatedAt,
+}: IRepoRowProps) => (
     <li className={cls.RepoRow}>
-        <h3>{name}</h3>
+        <Link to={`repo/${id}`}>{name}</Link>
         <div className={cls.meta}>
             <div className={cls.stars}>
                 <div className={cls.iconWrap}>
