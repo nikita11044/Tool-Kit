@@ -26207,7 +26207,16 @@ export type SearchReposByNameQueryVariables = Types.Exact<{
 }>;
 
 
-export type SearchReposByNameQuery = { search: { repositoryCount: number, pageInfo: { startCursor?: string | null, endCursor?: string | null }, nodes?: Array<{ id: string, name: string, stargazerCount: number, updatedAt: any } | {} | null> | null } };
+export type SearchReposByNameQuery = {
+  search: {
+    repositoryCount: number,
+    pageInfo: {
+      startCursor: string | null,
+      endCursor: string | null
+    },
+    nodes: Array<{ id: string, name: string, stargazerCount: number, updatedAt: any }>
+  }
+};
 
 
 export const SearchReposByNameDocument = `

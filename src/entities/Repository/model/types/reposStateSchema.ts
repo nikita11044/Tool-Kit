@@ -5,8 +5,8 @@ interface IRepoNode {
 }
 
 interface IPageInfo {
-    startCursor: string
-    endCursor: string
+    startCursor: string | null
+    endCursor: string | null
 }
 
 export interface IRepoNodesData {

@@ -1,0 +1,15 @@
+{
+  "name": "Github Schema",
+  "schemaPath": "./github-schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "Remote GraphlQL Endpoint": {
+        "url": "https://api.github.com/graphql",
+        "headers": {
+          "authorization": "Bearer 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"
+        },
+        "introspect": true
+      }
+    }
+  }
+}
