@@ -1,7 +1,6 @@
 import * as Types from '../../../../../models.gen';
 
 import { GraphQLClient } from 'graphql-request';
-import { RequestInit } from 'graphql-request/dist/types.dom';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -26223,6 +26222,13 @@ export type FindRepoByIdQuery = {
   }
 }
 
+export type FindRepoByIdError = {
+  response: {
+    errors: Array<{ type: string, message: string }>
+    status: number
+  }
+}
+
 export const FindRepoByIdDocument = `
     query FindRepoById($id: ID!) {
   node(id: $id) {
@@ -26251,7 +26257,7 @@ export const FindRepoByIdDocument = `
     `;
 export const useFindRepoByIdQuery = <
       TData = FindRepoByIdQuery,
-      TError = unknown
+      TError = FindRepoByIdError
     >(
       client: GraphQLClient,
       variables: FindRepoByIdQueryVariables,

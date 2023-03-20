@@ -1,4 +1,5 @@
 import cls from './RepoCard.module.scss';
+import { ReactComponent as Star } from '~/shared/assets/icons/star.svg';
 
 interface IRepoCardProps {
     name?: string
@@ -41,7 +42,7 @@ export const RepoCard = ({
                 </div>
                 <div className={cls.metaItem}>
                     <div className={cls.stars}>
-                        <img width="20" height="20" src="src/shared/assets/icons/star.svg" alt="stars" />
+                        <Star width={20} height={20} />
                         <p>{stargazerCount}</p>
                     </div>
                     <p>
