@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
-import { IReposStateSchema } from '~/entities/Repository/model/types/reposStateSchema';
+import { IReposStateSchema } from '../types/reposStateSchema';
 
 export const useRepos = create<IReposStateSchema>()(
     devtools(

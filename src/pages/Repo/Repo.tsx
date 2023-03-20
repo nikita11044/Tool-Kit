@@ -1,8 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { SvgIconBtn } from '~/shared/ui';
-import { RepoCard } from '~/entities/Repository';
+import { RepoCard, useFindRepoByIdQuery } from '~/entities/Repository';
 import { ReactComponent as ArrowBack } from '~/shared/assets/icons/arrowBack.svg';
-import { useFindRepoByIdQuery } from '~/entities/Repository/model/queries/findRepoById/findRepoById.gen';
 import { requestClient } from '~/shared/cfg';
 
 export const Repo = () => {
