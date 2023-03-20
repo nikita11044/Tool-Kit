@@ -1,12 +1,13 @@
 import cls from './RepoCard.module.scss';
 import { ReactComponent as Star } from '~/shared/assets/icons/star.svg';
+import { formatDate } from '~/shared/lib';
 
 interface IRepoCardProps {
     name?: string
     repoUrl: string
     ownerLogin?: string
     ownerProfileUrl?: string
-    avatarUrl?: string
+    avatarUrl: string
     stargazerCount?: number
     updatedAt: string
     description?: string
@@ -31,7 +32,7 @@ export const RepoCard = ({
             <h1 className={cls.title}>{name}</h1>
             <div className={cls.meta}>
                 <div className={cls.metaItem}>
-                    <img className={cls.img} src={avatarUrl || 'src/shared/assets/icons/avatar.svg'} alt="avatar" />
+                    <img className={cls.img} src={avatarUrl} alt="avatar" />
                     <div>
                         <p>
                             made by
@@ -47,7 +48,8 @@ export const RepoCard = ({
                     </div>
                     <p>
                         last commit:
-                        {updatedAt}
+                        {' '}
+                        {formatDate(updatedAt)}
                     </p>
                 </div>
             </div>

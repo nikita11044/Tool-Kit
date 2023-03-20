@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import cls from './RepoRow.module.scss';
 import { ReactComponent as Star } from '~/shared/assets/icons/star.svg';
+import { formatDate } from '~/shared/lib';
 
 interface IRepoRowProps {
     id: string
@@ -24,7 +25,7 @@ export const RepoRow = ({
             <span>
                 last commit:
                 {' '}
-                {updatedAt}
+                {formatDate(updatedAt)}
             </span>
         </div>
     </li>
