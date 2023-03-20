@@ -26198,55 +26198,68 @@ export enum WorkflowRunOrderField {
   CreatedAt = 'CREATED_AT'
 }
 
-export type SearchReposByNameQueryVariables = Types.Exact<{
-  repoQuery: Types.Scalars['String'];
-  first?: Types.InputMaybe<Types.Scalars['Int']>;
-  last?: Types.InputMaybe<Types.Scalars['Int']>;
-  before?: Types.InputMaybe<Types.Scalars['String']>;
-  after?: Types.InputMaybe<Types.Scalars['String']>;
+export type FindRepoByIdQueryVariables = Types.Exact<{
+  id: Types.Scalars['ID'];
 }>;
 
 
-export type SearchReposByNameQuery = { search: { repositoryCount: number, pageInfo: { startCursor?: string | null, endCursor?: string | null }, nodes?: Array<{ id: string, name: string, stargazerCount: number, updatedAt: any } | {} | null> | null } };
-
-
-export const SearchReposByNameDocument = `
-    query SearchReposByName($repoQuery: String!, $first: Int, $last: Int, $before: String, $after: String) {
-  search(
-    query: $repoQuery
-    type: REPOSITORY
-    first: $first
-    last: $last
-    before: $before
-    after: $after
-  ) {
-    repositoryCount
-    pageInfo {
-      startCursor
-      endCursor
+export type FindRepoByIdQuery = {
+  node: {
+    id: string,
+    name: string,
+    url: any,
+    stargazerCount: number,
+    description?: string,
+    updatedAt: any,
+    owner: {
+      login: string,
+      avatarUrl: any,
+      url: any
     }
-    nodes {
-      ... on Repository {
-        id
-        name
-        stargazerCount
-        updatedAt
+    languages?: {
+      totalCount: number,
+      nodes: Array<{ name: string, color: string }>
+    }
+  }
+}
+
+export const FindRepoByIdDocument = `
+    query FindRepoById($id: ID!) {
+  node(id: $id) {
+    ... on Repository {
+      id
+      name
+      url
+      stargazerCount
+      owner {
+        login
+        avatarUrl
+        url
+      }
+      description
+      updatedAt
+      languages(first: 5) {
+        totalCount
+        nodes {
+          name
+          color
+        }
       }
     }
   }
 }
     `;
-export const useSearchReposByNameQuery = <
-      TData = SearchReposByNameQuery,
+export const useFindRepoByIdQuery = <
+      TData = FindRepoByIdQuery,
       TError = unknown
     >(
       client: GraphQLClient,
-      variables: SearchReposByNameQueryVariables,
-      options?: UseQueryOptions<SearchReposByNameQuery, TError, TData>,
+      variables: FindRepoByIdQueryVariables,
+      options?: UseQueryOptions<FindRepoByIdQuery, TError, TData>,
       headers?: RequestInit['headers']
     ) =>
-    useQuery<SearchReposByNameQuery, TError, TData>(
-      ['SearchReposByName', variables],
-      fetcher<SearchReposByNameQuery, SearchReposByNameQueryVariables>(client, SearchReposByNameDocument, variables, headers),
+    useQuery<FindRepoByIdQuery, TError, TData>(
+      ['FindRepoById', variables],
+      fetcher<FindRepoByIdQuery, FindRepoByIdQueryVariables>(client, FindRepoByIdDocument, variables, headers),
       options
     );

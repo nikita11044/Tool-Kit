@@ -7,6 +7,7 @@ query SearchReposByName($repoQuery: String!, $first: Int, $last: Int, $before: S
         }
         nodes {
             ... on Repository {
+                id
                 name
                 stargazerCount
                 updatedAt

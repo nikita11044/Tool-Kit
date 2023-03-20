@@ -7,7 +7,6 @@ documents: './src/**/**.graphql'
 config:
   withHooks: true
   skipTypename: true
-  immutableTypes: true
   preResolveTypes: true
 generates:
   ./src/models.gen.ts:
