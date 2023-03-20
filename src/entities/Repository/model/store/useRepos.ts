@@ -5,7 +5,7 @@ import { IReposStateSchema } from '~/entities/Repository/model/types/reposStateS
 
 export const useRepos = create<IReposStateSchema>()(
     devtools(
-        immer((set, get) => ({
+        persist(immer((set, get) => ({
             repos: [],
             repoQuery: '',
             pageInfo: {
@@ -52,6 +52,6 @@ export const useRepos = create<IReposStateSchema>()(
                     state.after = null;
                 }, false, 'setPreviousPage');
             },
-        })),
+        })), { name: 'repos' }),
     ),
 );
